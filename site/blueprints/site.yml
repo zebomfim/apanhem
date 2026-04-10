@@ -1,0 +1,72 @@
+title: Web Solidaria
+tabs:
+  # 1. Contenido principal (Estructura de la Web)
+  content:
+    label: Contenido
+    icon: text
+    columns:
+      # Columna Principal: Páginas únicas (Inicio, Institucional, Contacto)
+      main:
+        width: 2/3
+        sections:
+          paginas_singulares:
+            type: pages
+            headline: Páginas Principales
+            status: all
+            create: false # Se pre-crean en el boilerplate, el cliente no debería borrarlas/crearlas
+            templates:
+              - home
+              - quienes-somos
+              - contacto
+              - colabora
+          paginas_legales:
+            type: pages
+            headline: Legal
+            status: all
+            create: default
+            templates:
+              - default
+            limit: 5
+
+      # Columna Secundaria: Gestores de listados (Noticias, Eventos, Proyectos)
+      sidebar:
+        width: 1/3
+        sections:
+          directorios:
+            type: pages
+            headline: Directorios (Noticias, Proyectos...)
+            status: all
+            create: false
+            templates:
+              - actualidad
+              - que-hacemos
+              - calendario
+              - recursos
+
+  # 2. Configuración Global (SEO, Redes Sociales, Ajustes Técnicos)
+  settings:
+    label: Configuración
+    icon: settings
+    columns:
+      main:
+        width: 1/2
+        fields:
+          # Aquí irán configuraciones generales de websolidaria core, correos genéricos, redes
+          contacto_global:
+            type: email
+            label: Correo de contacto principal
+            help: Correo que aparece en el footer y remite los correos del sistema.
+          telefono_global:
+            type: tel
+            label: Teléfono principal
+      sidebar:
+        width: 1/2
+        sections:
+          # Para gestionar pequeñas configuraciones via plugins
+          seo:
+            type: fields
+            fields:
+              # Reservado para plugin SEO tobimori
+              seo_note:
+                type: info
+                text: Ajustes de SEO centralizados en la pestaña dedicada del plugin.

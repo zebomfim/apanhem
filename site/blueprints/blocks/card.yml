@@ -1,0 +1,29 @@
+name: Tarjeta (Card)
+icon: box
+
+fields:
+  image:
+    label: Cargar Imagen Superior
+    type: files
+    multiple: false
+    layout: list
+  
+  title:
+    label: Título
+    type: text
+    width: 1/2
+    help: Título de impacto
+
+  link:
+    label: Enlace de Destino
+    type: url
+    width: 1/2
+    help: A dónde enviamos al hacer clic
+
+  text:
+    label: Texto Descriptivo
+    type: textarea
+    buttons:
+      - bold
+      - italic
+    size: small

@@ -1,0 +1,27 @@
+{
+    "name": "sylvainjule/embed",
+    "description": "Embed field for Kirby",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "version": "1.2.0", 
+    "authors": [
+        {
+            "name": "Sylvain Julé",
+            "email": "contact@sylvain-jule.fr"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.1",
+        "guzzlehttp/psr7": "^2.6",
+        "embed/embed": "^4.4"
+    },
+    "extra": {
+        "installer-name": "embed"
+    },
+    "minimum-stability": "beta",
+    "config": {
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    }
+}
