@@ -1,72 +1,106 @@
 title: Web Solidaria
+icon: settings
+
 tabs:
-  # 1. Contenido principal (Estructura de la Web)
+  # 1. GESTIÓN DE PÁGINAS
   content:
     label: Contenido
     icon: text
     columns:
-      # Columna Principal: Páginas únicas (Inicio, Institucional, Contacto)
       main:
         width: 2/3
         sections:
           paginas_singulares:
             type: pages
-            headline: Páginas Principales
+            headline: Estructura Principal
             status: all
-            create: false # Se pre-crean en el boilerplate, el cliente no debería borrarlas/crearlas
             templates:
               - home
               - quienes-somos
               - contacto
               - colabora
-          paginas_legales:
-            type: pages
-            headline: Legal
-            status: all
-            create: default
-            templates:
-              - default
-            limit: 5
-
-      # Columna Secundaria: Gestores de listados (Noticias, Eventos, Proyectos)
       sidebar:
         width: 1/3
         sections:
           directorios:
             type: pages
-            headline: Directorios (Noticias, Proyectos...)
+            headline: Directorios
             status: all
-            create: false
             templates:
               - actualidad
               - que-hacemos
               - calendario
-              - recursos
 
-  # 2. Configuración Global (SEO, Redes Sociales, Ajustes Técnicos)
-  settings:
-    label: Configuración
-    icon: settings
+  # 2. IDENTIDAD Y GLOBAL (Header/Footer)
+  global:
+    label: Global
+    icon: world
     columns:
-      main:
+      # PANTALLA: Lo que se ve arriba y abajo
+      header:
         width: 1/2
         fields:
-          # Aquí irán configuraciones generales de websolidaria core, correos genéricos, redes
-          contacto_global:
-            type: email
-            label: Correo de contacto principal
-            help: Correo que aparece en el footer y remite los correos del sistema.
-          telefono_global:
-            type: tel
-            label: Teléfono principal
-      sidebar:
+          logo:
+            label: Logo del Sitio
+            type: files
+            multiple: false
+            layout: cards
+            size: small
+          brand_name:
+            label: Nombre de marca (Si no hay logo)
+            type: text
+            width: 1/2
+      
+      footer:
         width: 1/2
+        fields:
+          social:
+            label: Redes Sociales
+            type: structure
+            fields:
+              platform:
+                label: Red
+                type: select
+                options:
+                  instagram: Instagram
+                  facebook: Facebook
+                  twitter: Twitter/X
+                  linkedin: LinkedIn
+                  youtube: YouTube
+              url:
+                label: URL
+                type: url
+          
+          footer_text:
+            label: Texto Legal / Copyright
+            type: textarea
+            size: small
+            buttons: false
+
+  # 3. CONTACTO Y AJUSTES
+  settings:
+    label: Ajustes
+    icon: cog
+    columns:
+      main:
+        width: 2/3
+        fields:
+          # Datos que se heredan si no se definen en páginas individuales
+          email_global:
+            label: Email de envíos (SMTP)
+            type: email
+          telefono_global:
+            label: Teléfono general
+            type: tel
+      sidebar:
+        width: 1/3
         sections:
-          # Para gestionar pequeñas configuraciones via plugins
           seo:
             type: fields
             fields:
-              # Reservado para plugin SEO tobimori
-              seo_note:
+              seo_info:
                 type: info
-                text: Ajustes de SEO centralizados en la pestaña dedicada del plugin.
+                text: El SEO se gestiona por página y de forma global en su pestaña dedicada.
+
+  # 4. SEO GLOBAL
+  seo: seo/site

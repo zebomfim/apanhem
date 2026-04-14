@@ -4,59 +4,58 @@ icon: users
 status:
   draft:
     label: Borrador
-    text: La página institucional no es pública.
   listed:
     label: Publicado
-    text: Visible en el menú principal.
 
-columns:
-  main:
-    width: 2/3
-    fields:
-      # Misión, Visión y Valores como campos destacados antes del Layout
-      mision:
-        label: Nuestra Misión
-        type: textarea
-        size: small
-      vision:
-        label: Nuestra Visión
-        type: textarea
-        size: small
-      
-      # Estructura principal flexible
-      layout:
-        label: Historia y Contenido Detallado
-        type: layout
-        layouts:
-          - "1/1"
-          - "1/2, 1/2"
-          - "2/3, 1/3"
-        fieldsets:
-          - text
-          - heading
-          - image
-          - html
-          - card
-
-  sidebar:
-    width: 1/3
-    fields:
-      cover:
-        label: Imagen Principal / Hero
-        type: files
-        multiple: false
-        layout: cards
-        size: small
-        template: image
-      
-      # Enlaces rápidos o secciones laterales
-      links:
-        label: Enlaces Relacionados
-        type: structure
+tabs:
+  # 1. CONTENIDO INSTITUCIONAL
+  content:
+    label: Contenido
+    icon: text
+    columns:
+      main:
+        width: 2/3
         fields:
-          link_text:
-            label: Texto del enlace
-            type: text
-          link_url:
-            label: URL
-            type: url
+          mision:
+            label: Nuestra Misión
+            type: textarea
+            size: small
+          vision:
+            label: Nuestra Visión
+            type: textarea
+            size: small
+          layout:
+            label: Historia y Contenido Detallado
+            type: layout
+            layouts:
+              - "1/1"
+              - "1/2, 1/2"
+              - "2/3, 1/3"
+            fieldsets:
+              - text
+              - heading
+              - image
+              - html
+
+      sidebar:
+        width: 1/3
+        fields:
+          cover:
+            label: Imagen Principal / Hero
+            type: files
+            multiple: false
+            layout: cards
+            size: small
+          links:
+            label: Enlaces Relacionados
+            type: structure
+            fields:
+              link_text:
+                label: Texto del enlace
+                type: text
+              link_url:
+                label: URL
+                type: url
+
+  # 2. SEO
+  seo: seo/page

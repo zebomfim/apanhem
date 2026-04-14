@@ -14,7 +14,7 @@
   <header class="header">
     <div class="header__container container">
       <a class="header__logo" href="<?= $site->url() ?>">
-        <?= $site->title() ?>
+        <?php snippet('logo') ?>
       </a>
       
       <nav class="menu">
