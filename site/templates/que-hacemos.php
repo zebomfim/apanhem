@@ -1,61 +1,60 @@
 <?php snippet('header') ?>
 
-<main class="container py-8">
-  <header class="mb-12">
-    <h1 class="text-4xl font-bold mb-4"><?= $page->headline()->or($page->title()) ?></h1>
+<div class="projects-page container">
+  
+  <header class="page-header">
+    <h1 class="page-header__title"><?= $page->headline()->or($page->title()) ?></h1>
     <?php if ($image = $page->cover()->toFile()): ?>
-      <figure class="aspect-video w-full max-h-[400px] overflow-hidden rounded-lg shadow-lg">
-        <img src="<?= $image->url() ?>" alt="<?= $image->alt() ?>" class="w-full h-full object-cover">
+      <figure class="page-header__figure">
+        <img src="<?= $image->url() ?>" alt="<?= $image->alt() ?>" class="page-header__image">
       </figure>
     <?php endif ?>
   </header>
 
-  <!-- Introducción flexible -->
-  <?php foreach ($page->layout()->toLayouts() as $layout): ?>
-    <section class="mb-12" id="<?= $layout->id() ?>">
-      <?php foreach ($layout->columns() as $column): ?>
-        <div class="blocks">
-          <?= $column->blocks() ?>
-        </div>
-      <?php endforeach ?>
-    </section>
-  <?php endforeach ?>
+  <div class="projects-page__intro">
+    <?php foreach ($page->layout()->toLayouts() as $layout): ?>
+      <section class="layout-row" id="<?= $layout->id() ?>">
+        <?php foreach ($layout->columns() as $column): ?>
+          <div class="layout-column layout-column--span-<?= $column->span() ?>">
+            <?= $column->blocks() ?>
+          </div>
+        <?php endforeach ?>
+      </section>
+    <?php endforeach ?>
+  </div>
 
-  <!-- Grid de Proyectos -->
-  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div class="projects-grid">
     <?php foreach ($page->children()->listed()->template('proyecto') as $project): ?>
-      <article class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-transform hover:-translate-y-1 hover:shadow-md">
+      <article class="project-card">
         <?php if ($image = $project->cover()->toFile()): ?>
-          <a href="<?= $project->url() ?>" class="block aspect-video overflow-hidden">
-            <img src="<?= $image->crop(600, 337)->url() ?>" alt="<?= $image->alt() ?>" class="w-full h-full object-cover">
+          <a href="<?= $project->url() ?>" class="project-card__figure">
+            <img src="<?= $image->crop(600, 337)->url() ?>" alt="<?= $image->alt() ?>" class="project-card__image">
           </a>
         <?php else: ?>
-          <div class="aspect-video bg-gray-100 flex items-center justify-center text-gray-400">
-            <span class="icon">cube</span>
-          </div>
+          <div class="project-card__placeholder"></div>
         <?php endif ?>
 
-        <div class="p-6 flex-grow">
-          <h2 class="text-xl font-bold mb-2">
-            <a href="<?= $project->url() ?>" class="hover:text-blue-600">
+        <div class="project-card__content">
+          <h2 class="project-card__title">
+            <a href="<?= $project->url() ?>" class="project-card__link">
               <?= $project->title() ?>
             </a>
           </h2>
           <?php if ($project->resume()->isNotEmpty()): ?>
-            <p class="text-gray-600 text-sm line-clamp-3">
+            <p class="project-card__description">
               <?= $project->resume() ?>
             </p>
           <?php endif ?>
         </div>
         
-        <div class="px-6 pb-6 pt-0">
-          <a href="<?= $project->url() ?>" class="text-blue-600 font-semibold text-sm hover:underline">
-            Saber más →
+        <footer class="project-card__footer">
+          <a href="<?= $project->url() ?>" class="project-card__more-link">
+            Saber más
           </a>
-        </div>
+        </footer>
       </article>
     <?php endforeach ?>
-  </section>
-</main>
+  </div>
+</div>
 
 <?php snippet('footer') ?>
