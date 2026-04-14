@@ -1,0 +1,36 @@
+# System files
+.DS_Store
+Icon
+Thumbs.db
+
+# Temporary/Cache files
+/media/*
+!/media/index.html
+/site/cache/*
+!/site/cache/index.html
+/site/sessions/*
+!/site/sessions/index.html
+
+# Security & Config
+.env
+.env.local
+.env.*.local
+/site/config/.license
+
+# Core Kirby & Vendor (Standard for deployment)
+/kirby
+/vendor
+
+# Logs
+/logs/*
+/site/logs/*
+!/site/logs/index.html
+/site/logs/turnstile.log
+
+# Development
+node_modules/
+package-lock.json
+yarn.lock
+.vscode/
+.idea/
+*.sublime-workspace

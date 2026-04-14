@@ -1,0 +1,61 @@
+title: Contacto
+icon: contact
+
+status:
+  draft:
+    label: Borrador
+  listed:
+    label: Publicado
+    text: La página de contacto es visible en el menú.
+
+columns:
+  main:
+    width: 2/3
+    fields:
+      # Permitimos añadir bloques de texto, imágenes o citas si hace falta más info
+      layout:
+        label: Contenido Adicional
+        type: layout
+        layouts:
+          - "1/1"
+          - "1/2, 1/2"
+        fieldsets:
+          - text
+          - heading
+          - image
+          - html
+
+  sidebar:
+    width: 1/3
+    fields:
+      contact_info_title:
+        label: Información de Contacto
+        type: info
+        text: Configura aquí los datos que aparecerán destacados (sin formulario).
+      
+      direccion:
+        label: Dirección física
+        type: textarea
+        size: small
+        buttons: false
+      
+      telefono:
+        label: Teléfono
+        type: tel
+        width: 1/2
+      
+      email:
+        label: Correo Electrónico
+        type: email
+        width: 1/2
+        
+      horario:
+        label: Horario de atención
+        type: textarea
+        size: small
+        buttons: false
+        
+      google_maps:
+        label: Enlace a Google Maps
+        type: url
+        help: Pega aquí la URL de compartir de Google Maps.
