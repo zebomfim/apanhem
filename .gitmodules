@@ -1,0 +1,3 @@
+[submodule "site/plugins/websolidaria-core"]
+	path = site/plugins/websolidaria-core
+	url = https://github.com/zebomfim/websolidaria-core.git

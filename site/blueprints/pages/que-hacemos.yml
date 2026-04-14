@@ -1,0 +1,50 @@
+title: Qué Hacemos (Servicios)
+icon: grid-view
+
+status:
+  draft:
+    label: Borrador
+    text: El listado de proyectos no es visible.
+  listed:
+    label: Publicado
+    text: Visible en el menú principal.
+
+columns:
+  main:
+    width: 2/3
+    fields:
+      headline:
+        label: Titular de la sección
+        type: text
+        placeholder: Nuestros proyectos y servicios
+      
+      # Layout opcional para añadir una introducción arriba del grid
+      layout:
+        label: Introducción
+        type: layout
+        layouts:
+          - "1/1"
+        fieldsets:
+          - text
+          - heading
+          - image
+      
+      # Listado automático de hijos (proyectos)
+      projects_grid:
+        label: Proyectos / Servicios actuales
+        type: pages
+        template: proyecto
+        layout: cards
+        size: small
+        info: "{{ page.resume }}"
+
+  sidebar:
+    width: 1/3
+    fields:
+      cover:
+        label: Imagen de Cabecera
+        type: files
+        multiple: false
+        layout: cards
+        size: small
+        template: image
