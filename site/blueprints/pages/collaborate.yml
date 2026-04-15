@@ -1,0 +1,33 @@
+title: Colabora
+icon: heart
+
+status:
+  draft:
+    label: Borrador
+  listed:
+    label: Publicado
+
+tabs:
+  # 1. CONTENIDO
+  content:
+    label: Contenido
+    icon: text
+    columns:
+      main:
+        width: 1/1
+        fields:
+          headline:
+            label: Titular de la página
+            type: text
+          layout:
+            label: Cómo colaborar
+            type: layout
+            layouts:
+              - "1/1"
+            fieldsets:
+              - text
+              - heading
+              - image
+
+  # 2. SEO
+  seo: seo/page

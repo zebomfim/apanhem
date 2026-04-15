@@ -1,0 +1,1 @@
+Title: Error 404\n\n----\n\nText: La página que buscas no existe o ha sido movida.

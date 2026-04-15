@@ -1,0 +1,42 @@
+title: Servicios
+icon: layers
+
+status:
+  draft:
+    label: Borrador
+  listed:
+    label: Publicado
+
+tabs:
+  # 1. LISTADO DE PROYECTOS Y CONTENIDO
+  content:
+    label: Contenido
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        fields:
+          headline:
+            label: Titular de la sección
+            type: text
+          layout:
+            label: Texto introductorio
+            type: layout
+            layouts:
+              - "1/1"
+            fieldsets:
+              - text
+              - heading
+      
+      sidebar:
+        width: 1/3
+        fields:
+          cover:
+            label: Imagen de cabecera
+            type: files
+            multiple: false
+            layout: cards
+            size: small
+
+  # 2. SEO
+  seo: seo/page

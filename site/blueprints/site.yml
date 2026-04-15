@@ -8,28 +8,19 @@ tabs:
     icon: text
     columns:
       main:
-        width: 2/3
+        width: 1/1
         sections:
-          paginas_singulares:
+          main_structure:
             type: pages
             headline: Estructura Principal
             status: all
             templates:
               - home
-              - quienes-somos
-              - contacto
-              - colabora
-      sidebar:
-        width: 1/3
-        sections:
-          directorios:
-            type: pages
-            headline: Directorios
-            status: all
-            templates:
-              - actualidad
-              - que-hacemos
-              - calendario
+              - services
+              - calendar
+              - collaborate
+              - about
+              - contact
 
   # 2. IDENTIDAD Y GLOBAL (Header/Footer)
   global:
