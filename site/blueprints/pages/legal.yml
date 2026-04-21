@@ -1,0 +1,40 @@
+title: Contenido Legal
+icon: quote
+
+status:
+  draft:
+    label: Borrador
+  listed:
+    label: Publicado
+
+tabs:
+  content:
+    label: Contenido
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        fields:
+          hero_title:
+            label: Título Principal
+            type: text
+            help: Título que aparece en la parte superior de la página legal.
+          hero_subtitle:
+            label: Introducción (opcional)
+            type: textarea
+            size: small
+            help: Texto introductorio opcional antes del contenido detallado.
+          text:
+            label: Contenido Legal
+            type: textarea
+            size: huge
+            help: El texto completo de la política o aviso legal.
+
+      sidebar:
+        width: 1/3
+        fields:
+          info:
+            type: info
+            text: Asegúrate de que los textos legales cumplan con la normativa vigente de tu país.
+
+  seo: seo/page

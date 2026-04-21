@@ -21,6 +21,13 @@ tabs:
               - collaborate
               - about
               - contact
+          system_pages:
+            type: pages
+            headline: Páginas secundarias
+            status: listed
+            templates:
+              - error
+              - legal
 
   # 2. IDENTIDAD Y GLOBAL (Header/Footer)
   global:

@@ -13,13 +13,24 @@
 
   <header class="header">
     <div class="header__container container">
-      <a class="header__logo" href="<?= $site->url() ?>">
+      
+      <!-- Logo -->
+      <a href="<?= $site->url() ?>" class="header__brand" aria-label="Volver al inicio">
         <?php snippet('logo') ?>
       </a>
-      
-      <nav class="menu">
+
+      <!-- Botón Menú Móvil (Hamburger) -->
+      <button type="button" class="header__toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú principal">
+        <span class="header__toggle-icon"></span>
+      </button>
+
+      <!-- Navegación Principal -->
+      <nav id="main-menu" class="header__nav menu">
         <ul class="menu__list">
-          <?php foreach ($site->children()->listed() as $item): ?>
+          <?php 
+          $menuItems = $site->children()->listed()->filterBy('num', '<', 90);
+          foreach ($menuItems as $item): 
+          ?>
           <li class="menu__item">
             <a class="menu__link <?php e($item->isOpen(), 'menu__link--active') ?>" href="<?= $item->url() ?>">
               <?= $item->title() ?>
@@ -27,7 +38,13 @@
           </li>
           <?php endforeach ?>
         </ul>
+        
+        <!-- CTA del menú -->
+        <div class="menu__actions">
+          <a href="<?= url('contact') ?>" class="menu__cta btn btn--primary">Contacto</a>
+        </div>
       </nav>
+
     </div>
   </header>
 
