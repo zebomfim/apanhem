@@ -1,10 +1,10 @@
 <?php snippet('header') ?>
 
+<!-- Componente Hero Dinámico -->
+<?php snippet('hero') ?>
+
 <div class="contact-page container">
-  
-  <header class="page-header">
-    <h1 class="page-header__title"><?= $page->title() ?></h1>
-  </header>
+
 
   <div class="contact-page__grid">
     

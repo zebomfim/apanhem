@@ -16,9 +16,12 @@ tabs:
       main:
         width: 2/3
         fields:
-          headline:
-            label: Titular de la página
-            type: text
+          # Inyectamos el componente reutilizable del Hero
+          hero: fields/hero
+          
+          layout_headline:
+            label: Contenido de la página
+            type: headline
           layout:
             label: Bloques adicionales
             type: layout
@@ -53,5 +56,66 @@ tabs:
             label: Google Maps URL
             type: url
 
-  # 2. SEO
+  # 2. FORMULARIO
+  form_settings:
+    label: Formulario
+    icon: text-center
+    columns:
+      main:
+        width: 2/3
+        fields:
+          success_message:
+            label: Mensaje de éxito
+            type: textarea
+            size: small
+            help: Mensaje que se muestra al usuario tras enviar el formulario.
+          submit_label:
+            label: Texto del botón de envío
+            type: text
+            default: Enviar mensaje
+          
+          # Campos dinámicos requeridos por websolidaria-core/controllers/contact.php
+          form_fields_headline:
+            label: Campos a incluir en el formulario
+            type: headline
+          include_first_name:
+            label: Nombre
+            type: toggle
+            default: true
+            width: 1/3
+          include_last_name:
+            label: Apellidos
+            type: toggle
+            default: true
+            width: 1/3
+          include_email:
+            label: Email
+            type: toggle
+            default: true
+            width: 1/3
+          include_phone:
+            label: Teléfono
+            type: toggle
+            default: false
+            width: 1/3
+          include_message:
+            label: Mensaje
+            type: toggle
+            default: true
+            width: 1/3
+          include_consent:
+            label: Casilla de privacidad
+            type: toggle
+            default: true
+            width: 1/3
+
+      sidebar:
+        width: 1/3
+        fields:
+          notification_email:
+            label: Email para recibir avisos
+            type: email
+            help: Si se deja en blanco, usará el email global de ajustes.
+
+  # 3. SEO
   seo: seo/page
