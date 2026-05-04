@@ -1,0 +1,857 @@
+/* ==========================================================================
+   APANHEM — Global stylesheet
+   Hanken Grotesk · #CD3333 · 12/4/3 col grid · no media queries*
+
+   TABLE OF CONTENTS
+    1. Design Tokens          (:root)
+    2. Reset                  (Josh W. Comeau)
+    3. Base                   (html, body, typography, images)
+    4. Atom: Container        (.container)
+    5. Atom: Button           (.btn)
+    6. Atom: Section label    (.label)
+    7. Organism: Header       (.header, .menu)
+    8. Organism: Hero         (.hero)
+    9. Organism: Footer       (.footer)
+   10. Page: Contact          (.contact-page, .contact-*)
+
+   * One media query allowed for the mobile hamburger menu — unavoidable
+     layout case. JS in websolidaria-core handles the toggle state.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+
+  /* --- Typography ------------------------------------------------------- */
+  --font-sans:    'Hanken Grotesk', system-ui, sans-serif;
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+
+  /* Fluid type scale — Major Third (1.25) mobile → Perfect Fourth (1.333) desktop
+     Generated with fluid-type-scale.com · min 16px @ 375px · max 18px @ 1440px */
+  --fs-sm:      clamp(0.8rem,   0.07vi + 0.78rem, 0.84rem);   /*  13→13.5px */
+  --fs-base:    clamp(1rem,     0.19vi + 0.96rem, 1.13rem);   /*  16→18px   */
+  --fs-md:      clamp(1.25rem,  0.38vi + 1.16rem, 1.5rem);    /*  20→24px   */
+  --fs-lg:      clamp(1.56rem,  0.66vi + 1.41rem, 2rem);      /*  25→32px   */
+  --fs-xl:      clamp(1.95rem,  1.07vi + 1.7rem,  2.66rem);   /*  31→43px   */
+  --fs-display: clamp(2.44rem,  1.67vi + 2.05rem, 3.55rem);   /*  39→57px   */
+
+  /* Section label — uppercase with tracking */
+  --fs-label:      var(--fs-sm);
+  --label-spacing: 0.1em;
+
+  /* --- Colors ----------------------------------------------------------- */
+  --color-crimson:      #CD3333;
+  --color-crimson-dark: #A82828;
+  --color-crimson-rgb:  205, 51, 51;
+
+  --color-bg:           #F5F4F1;
+  --color-surface:      #FFFFFF;
+  --color-text:         #1A1A1A;
+  --color-text-muted:   #6B6B6B;
+  --color-white:        #FFFFFF;
+  --color-border:       #E2E0DC;
+
+  /* --- Spacing ---------------------------------------------------------- */
+  /* 0–6: fixed · 7–12: fluid */
+  --space-0:  0.125rem;                         /*  2px        */
+  --space-1:  0.25rem;                          /*  4px        */
+  --space-2:  0.5rem;                           /*  8px        */
+  --space-3:  0.75rem;                          /* 12px        */
+  --space-4:  1rem;                             /* 16px        */
+  --space-5:  1.25rem;                          /* 20px        */
+  --space-6:  1.5rem;                           /* 24px        */
+  --space-7:  clamp(1.5rem,  3vw,  2rem);       /* 24→32px     */
+  --space-8:  clamp(2rem,    4vw,  3rem);       /* 32→48px     */
+  --space-9:  clamp(2.5rem,  5vw,  4rem);       /* 40→64px     */
+  --space-10: clamp(3rem,    6vw,  5rem);       /* 48→80px     */
+  --space-11: clamp(3.5rem,  7vw,  6rem);       /* 56→96px     */
+  --space-12: clamp(4rem,    8vw,  8rem);       /* 64→128px    */
+
+  /* --- Layout ----------------------------------------------------------- */
+  --container-max:     90rem;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+  --grid-gutter:       clamp(0.625rem, 1.5vw, 1rem);
+
+  /* --- Border radius ---------------------------------------------------- */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-pill: 100vmax;
+
+  /* --- Transitions ------------------------------------------------------ */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+
+/* ==========================================================================
+   2. RESET — Josh W. Comeau (joshwcomeau.com/css/custom-css-reset)
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  /* Preserve the browser's base font size for accessibility */
+  font-size: 100%;
+  /* Prevent iOS font size inflation on orientation change */
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+
+/* ==========================================================================
+   3. BASE
+   ========================================================================== */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--fs-display); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-md); }
+h5, h6 { font-size: var(--fs-base); font-weight: var(--fw-semibold); }
+
+p {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+}
+
+p + p {
+  margin-top: var(--space-4);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Inline links within body copy */
+:where(p, li) a {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-fast);
+}
+
+:where(p, li) a:hover {
+  color: var(--color-crimson);
+  text-decoration-color: var(--color-crimson);
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+strong {
+  font-weight: var(--fw-semibold);
+}
+
+
+/* ==========================================================================
+   4. ATOM: CONTAINER
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+/* ==========================================================================
+   5. ATOM: BUTTON
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-normal),
+    color            var(--transition-normal),
+    border-color     var(--transition-normal);
+}
+
+/* Solid crimson fill */
+.btn--primary {
+  background-color: var(--color-crimson);
+  color: var(--color-white);
+  border-color: var(--color-crimson);
+}
+.btn--primary:hover {
+  background-color: var(--color-crimson-dark);
+  border-color: var(--color-crimson-dark);
+}
+
+/* Crimson outline */
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-crimson);
+  border-color: var(--color-crimson);
+}
+.btn--outline:hover {
+  background-color: var(--color-crimson);
+  color: var(--color-white);
+}
+
+/* White outline — for use on dark or crimson backgrounds */
+.btn--outline-white {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+.btn--outline-white:hover {
+  background-color: var(--color-white);
+  color: var(--color-crimson);
+}
+
+
+/* ==========================================================================
+   6. ATOM: SECTION LABEL
+   ========================================================================== */
+
+/* e.g. "ABOUT US", "LET'S TALK", "PROGRAMS (2)" */
+.label {
+  display: block;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  color: var(--color-crimson);
+}
+
+
+/* ==========================================================================
+   7. ORGANISM: HEADER
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  height: clamp(3.5rem, 5vw, 5rem);
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.menu__link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  color: var(--color-crimson);
+  transition: color var(--transition-fast);
+}
+
+.menu__link:hover,
+.menu__link--active {
+  color: var(--color-crimson-dark);
+}
+
+.menu__actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Hamburger button — hidden on desktop */
+.header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.header__toggle-icon,
+.header__toggle-icon::before,
+.header__toggle-icon::after {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background-color: var(--color-text);
+  transition:
+    transform var(--transition-normal),
+    opacity   var(--transition-fast);
+}
+
+.header__toggle-icon {
+  position: relative;
+}
+
+.header__toggle-icon::before,
+.header__toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.header__toggle-icon::before { top: -6px; }
+.header__toggle-icon::after  { top:  6px; }
+
+/* Open state — menu.js sets aria-expanded="true" */
+.header__toggle[aria-expanded="true"] .header__toggle-icon {
+  background-color: transparent;
+}
+.header__toggle[aria-expanded="true"] .header__toggle-icon::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.header__toggle[aria-expanded="true"] .header__toggle-icon::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile nav layout — only allowed media query in this file */
+@media (max-width: 48rem) {
+  .header__toggle {
+    display: flex;
+  }
+
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-6) var(--container-padding);
+  }
+
+  .header__nav.is-open {
+    display: flex;
+  }
+
+  .menu__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  .menu__actions {
+    width: 100%;
+  }
+
+  .menu__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   8. ORGANISM: HERO
+   ========================================================================== */
+
+/*
+   HTML (site/snippets/hero.php):
+   <section class="hero" style="background-image: url('…')">
+     <div class="hero__container container">
+       <h1 class="hero__title">…</h1>
+     </div>
+   </section>
+*/
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--color-text);
+}
+
+/* Dark gradient overlay for text legibility */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.2)  60%,
+    rgba(0, 0, 0, 0.1)  100%
+  );
+}
+
+.hero__container {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--space-9);
+}
+
+.hero__title {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  line-height: 1.1;
+  max-width: 18ch;
+}
+
+
+/* ==========================================================================
+   9. ORGANISM: FOOTER
+   ========================================================================== */
+
+/*
+   NOTE: footer.php is currently a base version. The full design requires
+   expanding the snippet with address columns, phone/hours, "Join us" button
+   and a back-to-top arrow. This CSS will be updated alongside the snippet.
+*/
+
+.footer {
+  background-color: var(--color-crimson);
+  color: var(--color-white);
+  padding-block: var(--space-10);
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Top row: brand + nav */
+.footer__main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__logo-link {
+  display: inline-flex;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.footer__nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 8rem;
+}
+
+.footer__nav-title {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__nav-link {
+  font-size: var(--fs-sm);
+  color: var(--color-white);
+  transition: opacity var(--transition-fast);
+}
+
+.footer__nav-link:hover {
+  opacity: 0.75;
+}
+
+/* Bottom row: social + copyright */
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer__social-list {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer__social-link {
+  font-size: var(--fs-sm);
+  color: var(--color-white);
+  transition: opacity var(--transition-fast);
+}
+
+.footer__social-link:hover {
+  opacity: 0.75;
+}
+
+.footer__copy {
+  font-size: var(--fs-sm);
+  opacity: 0.6;
+}
+
+.footer__copy p {
+  font-size: inherit;
+  color: inherit;
+}
+
+
+/* ==========================================================================
+   10. PAGE: CONTACT
+   ========================================================================== */
+
+/*
+   HTML (site/templates/contact.php):
+   <main class="contact-page">
+     <section class="contact-page__intro">…</section>
+     <section class="contact-page__talk">…</section>
+     <section class="contact-page__locations">…</section>
+     <section class="contact-page__map">…</section>
+   </main>
+*/
+
+/* --- Intro -------------------------------------------------------------- */
+
+.contact-page__intro {
+  padding-block: var(--space-10);
+  text-align: center;
+}
+
+.contact-intro {
+  max-width: 42rem;
+  margin-inline: auto;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-crimson);
+  line-height: 1.4;
+}
+
+/* --- Talk (contact info + illustration) -------------------------------- */
+
+.contact-page__talk {
+  padding-block: var(--space-9);
+  background-color: var(--color-surface);
+}
+
+.contact-talk {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.contact-talk__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact-talk__title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-crimson);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+}
+
+.contact-talk__text {
+  font-size: var(--fs-base);
+  color: var(--color-text);
+}
+
+/* Two-column grid: contact info left · illustration right */
+.contact-talk__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.contact-talk__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-talk__figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-talk__image {
+  width: 100%;
+  max-width: 20rem;
+}
+
+/* Emails */
+.contact-emails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-email {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0);
+}
+
+.contact-email__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+}
+
+.contact-email__link {
+  font-size: var(--fs-base);
+  color: var(--color-crimson);
+  transition: color var(--transition-fast);
+}
+
+.contact-email__link:hover {
+  color: var(--color-crimson-dark);
+}
+
+/* Phone */
+.contact-phone__heading {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.contact-phone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.contact-phone__link {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-crimson);
+  transition: color var(--transition-fast);
+}
+
+.contact-phone__link:hover {
+  color: var(--color-crimson-dark);
+}
+
+.contact-phone__schedule {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* Social links */
+.contact-social__intro {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.contact-social__link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-crimson);
+  transition: color var(--transition-fast);
+}
+
+.contact-social__link:hover {
+  color: var(--color-crimson-dark);
+}
+
+/* --- Locations --------------------------------------------------------- */
+
+.contact-page__locations {
+  padding-block: var(--space-10);
+}
+
+.contact-locations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.contact-locations__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.contact-locations__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--grid-gutter);
+}
+
+.contact-address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-address__figure {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.contact-address__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.contact-address:hover .contact-address__image {
+  transform: scale(1.03);
+}
+
+.contact-address__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-address__title {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--label-spacing);
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.contact-address__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.contact-address__schedule {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* --- Map --------------------------------------------------------------- */
+
+/* No padding — map spans full width */
+.contact-map {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  overflow: hidden;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
