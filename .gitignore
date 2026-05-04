@@ -17,9 +17,12 @@ Thumbs.db
 .env.*.local
 /site/config/.license
 
-# Core Kirby & Vendor (Standard for deployment)
+# Kirby core y dependencias — se instalan via `composer install`
 /kirby
 /vendor
+
+# Contenido del panel — gestionado en producción, no se versiona
+/content
 
 # Logs
 /logs/*
