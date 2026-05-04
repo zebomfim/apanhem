@@ -1,18 +1,22 @@
 type: group
 fields:
   hero_headline:
-    label: Componente Hero
+    label: Portada
     type: headline
   hero_title:
-    label: Título del Hero
-    type: textarea
-    buttons: false
-    size: small
+    label: Texto de la portada
+    type: text
     help: Texto destacado sobre la imagen. Si se deja vacío, usará el título oficial de la página.
+    width: 1/2
   hero_image:
-    label: Imagen de fondo (Hero)
+    label: Imagen de fondo
     type: files
     multiple: false
     layout: cards
     size: small
+    width: 1/2
+    image:
+      ratio: 8/5
+      cover: true
+      back: white
     help: Fotografía a pantalla completa. Recomendado formato horizontal optimizado.

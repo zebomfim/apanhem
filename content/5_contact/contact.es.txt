@@ -2,4 +2,148 @@ Title: Contacto
 
 ----
 
+Hero-title: Estamos aquí para escucharte
+
+----
+
+Hero-image: - file://cgbgjeultj0x5byo
+
+----
+
+Intro-text: Queremos escucharte, ponte en contacto con nuestro equipo.
+
+----
+
+Hablemos-title: Hablemos
+
+----
+
+Hablemos-text:
+
+Si tienes cualquier duda, o te gustaría ampliar información sobre alguno de los servicios que
+podemos ofrecerte, ponte en contacto con nosotros a través de:
+
+----
+
+Hablemos-image: 
+
+----
+
+Emails:
+
+- 
+  title: Contacto
+  email: contacto@apanhemtalavera.org
+- 
+  title: Psicología
+  email: psicologia@apanhemtalavera.org
+
+----
+
+Phones-title: Horario de atención telefónica
+
+----
+
+Phone: 
+
+----
+
+Phone-schedule:
+
+Horario de atención telefónica:
+Teléfono de atención telefónica: (link: tel:+34624502169 text: 624 502 169)
+(lunes a viernes de 10:00 a 13:00 h y de 17:00 a 20:00 h).
+O a través de nuestra redes sociales.
+
+----
+
+Social-intro: 
+
+----
+
+Installations-title: O ven a visitarnos a nuestras instalaciones
+
+----
+
+Addresses:
+
+- 
+  image: [ ]
+  title: Sede de ApanHem
+  is_main: 'true'
+  address: |
+    Centro Cívico La Solana
+    C/ Mariano Ortega 28, sala 8
+  schedule: Jueves de 17:00-20:00 (Cita Previa)
+
+----
+
+Google-maps: 
+
+----
+
+Metatitle: 
+
+----
+
+Metatemplate: 
+
+----
+
+Usetitletemplate: true
+
+----
+
+Metadescription: 
+
+----
+
+Ogtemplate: 
+
+----
+
+Useogtemplate: true
+
+----
+
+Ogdescription: 
+
+----
+
+Ogimage: 
+
+----
+
+Cropogimage: 
+
+----
+
+Robotsindex: default
+
+----
+
+Robotsfollow: default
+
+----
+
+Robotsarchive: default
+
+----
+
+Robotsimageindex: default
+
+----
+
+Robotssnippet: default
+
+----
+
+Metainherit: 
+
+----
+
+Phones: 
+
+----
+
 Uuid: cx6sjrwstffnecu0

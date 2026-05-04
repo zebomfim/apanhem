@@ -8,114 +8,155 @@ status:
     label: Publicado
 
 tabs:
-  # 1. DATOS DE CONTACTO
+  # 1. CONTENIDO
   content:
     label: Contenido
     icon: text
-    columns:
-      main:
-        width: 2/3
-        fields:
-          # Inyectamos el componente reutilizable del Hero
-          hero: fields/hero
-          
-          layout_headline:
-            label: Contenido de la página
-            type: headline
-          layout:
-            label: Bloques adicionales
-            type: layout
-            layouts:
-              - "1/1"
-            fieldsets:
-              - text
-              - image
+    fields:
+      hero: fields/hero
 
-      sidebar:
-        width: 1/3
-        fields:
-          contact_details:
-            label: Información de contacto
-            type: group
-            fields:
-              direccion:
-                label: Dirección
-                type: textarea
-                size: small
-              telefono:
-                label: Teléfono
-                type: tel
-              email:
-                label: Email
-                type: email
-              horario:
-                label: Horario
-                type: textarea
-                size: small
-          google_maps:
-            label: Google Maps URL
-            type: url
+      intro_headline:
+        label: Introducción
+        type: headline
 
-  # 2. FORMULARIO
-  form_settings:
-    label: Formulario
-    icon: text-center
-    columns:
-      main:
-        width: 2/3
+      intro_text:
+        label: Texto introductorio
+        type: text
+        help: Ej. "Queremos escucharte, ponte en contacto con nuestro equipo."
+
+      hablemos_headline:
+        label: Sección "Hablemos"
+        type: headline
+
+      hablemos_title:
+        label: Título
+        type: text
+        default: "HABLEMOS"
+        width: 1/2
+
+      hablemos_text:
+        label: Texto de presentación
+        type: textarea
+        size: small
+        help: Ej. "Si tienes cualquier duda..."
+        width: 1/2
+
+      hablemos_image:
+        label: Ilustración (bocadillos)
+        type: files
+        multiple: false
+        layout: cards
+        size: small
+        width: 1/1
+
+      emails:
+        label: Correos electrónicos
+        type: structure
         fields:
-          success_message:
-            label: Mensaje de éxito
+          title:
+            label: Departamento / Persona
+            type: text
+            help: P.ej. Psicología, Trabajo Social...
+            width: 1/2
+          email:
+            label: Email
+            type: email
+            width: 1/2
+
+      phones_headline:
+        label: Atención Telefónica
+        type: headline
+
+      phones_title:
+        label: Título de la sección
+        type: text
+        default: "Horario de atención telefónica:"
+
+      phone:
+        label: Teléfono
+        type: tel
+        width: 1/2
+
+      phone_schedule:
+        label: Horario
+        type: textarea
+        size: small
+        help: Ej. "lunes a viernes de 10:00 a 13:00 h y de 17:00 a 20:00 h"
+        width: 1/2
+
+      social_intro:
+        label: Texto introductorio a Redes Sociales
+        type: text
+        default: "O a través de nuestras redes sociales"
+        help: Este texto aparecerá antes de los enlaces a redes sociales (configurados en los Ajustes Generales).
+
+      installations_headline:
+        label: Instalaciones
+        type: headline
+
+      installations_title:
+        label: Título de la sección
+        type: text
+        default: "O VEN A VISITARNOS A NUESTRAS INSTALACIONES"
+
+      addresses:
+        label: Direcciones e Instalaciones
+        type: structure
+        fields:
+          image:
+            label: Foto de la instalación
+            type: files
+            multiple: false
+            layout: cards
+            size: small
+            width: 1/4
+          title:
+            label: Nombre de la sede
+            type: text
+            help: P.ej. Sede de Apanhem o Piso Asistencial
+            width: 1/4
+          is_main:
+            label: ¿Es la principal?
+            type: toggle
+            text:
+              - "No"
+              - "Sí"
+            default: false
+            help: Se usará en el pie de página
+            width: 1/4
+          address:
+            label: Dirección
             type: textarea
             size: small
-            help: Mensaje que se muestra al usuario tras enviar el formulario.
-          submit_label:
-            label: Texto del botón de envío
+            width: 1/2
+          schedule:
+            label: Horario / Notas
             type: text
-            default: Enviar mensaje
-          
-          # Campos dinámicos requeridos por websolidaria-core/controllers/contact.php
-          form_fields_headline:
-            label: Campos a incluir en el formulario
-            type: headline
-          include_first_name:
-            label: Nombre
-            type: toggle
-            default: true
-            width: 1/3
-          include_last_name:
-            label: Apellidos
-            type: toggle
-            default: true
-            width: 1/3
-          include_email:
-            label: Email
-            type: toggle
-            default: true
-            width: 1/3
-          include_phone:
-            label: Teléfono
-            type: toggle
-            default: false
-            width: 1/3
-          include_message:
-            label: Mensaje
-            type: toggle
-            default: true
-            width: 1/3
-          include_consent:
-            label: Casilla de privacidad
-            type: toggle
-            default: true
-            width: 1/3
+            width: 1/2
 
-      sidebar:
-        width: 1/3
-        fields:
-          notification_email:
-            label: Email para recibir avisos
-            type: email
-            help: Si se deja en blanco, usará el email global de ajustes.
+      google_maps:
+        label: Google Maps (Iframe)
+        type: textarea
+        size: small
+        help: 'Pega aquí el código HTML (iframe). NOTA: Para mostrar múltiples ubicaciones con PIN (ej. las dos sedes a la vez), debes crear un mapa en "Google My Maps" (mymaps.google.com) y pegar aquí su código de inserción.'
+
+  # 2. FORMULARIO (desactivado — no hay formulario en el diseño actual, reservado para uso futuro)
+  # form_settings:
+  #   label: Formulario
+  #   icon: email
+  #   fields:
+  #     notification_email:
+  #       label: Email de destino
+  #       type: email
+  #       help: Si se deja vacío, usa el email OAuth del .env
+  #     success_message:
+  #       label: Mensaje de éxito
+  #       type: textarea
+  #       size: small
+  #     submit_label:
+  #       label: Texto del botón
+  #       type: text
+  #       default: Enviar mensaje
 
   # 3. SEO
   seo: seo/page

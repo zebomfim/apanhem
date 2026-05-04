@@ -10,6 +10,14 @@ Brand-name: Apanhem Talavera
 
 ----
 
+Email-global: info@apanhemtalavera.org
+
+----
+
+Telefono-global: 
+
+----
+
 Social: 
 
 ----
@@ -18,8 +26,52 @@ Footer-text:
 
 ----
 
-Email-global: 
+Metatemplate: 
 
 ----
 
-Telefono-global: 
+Metadescription: 
+
+----
+
+Ogtemplate: 
+
+----
+
+Ogdescription: 
+
+----
+
+Ogsitename: 
+
+----
+
+Ogimage: 
+
+----
+
+Cropogimage: true
+
+----
+
+Robotsindex: 
+
+----
+
+Robotsfollow: 
+
+----
+
+Robotsarchive: 
+
+----
+
+Robotsimageindex: 
+
+----
+
+Robotssnippet: 
+
+----
+
+Socialmediaaccounts: 

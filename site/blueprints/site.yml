@@ -12,7 +12,7 @@ tabs:
         sections:
           main_structure:
             type: pages
-            headline: Estructura Principal
+            headline: Estructura principal
             status: all
             templates:
               - home
@@ -44,15 +44,16 @@ tabs:
             multiple: false
             layout: cards
             size: small
+          favicon:
+            label: Favicon
+            type: files
+            info: "📐 Dimensiones recomendadas: 512x512px (cuadrado)."
+            multiple: false
+            layout: cards
+            size: small
           brand_name:
             label: Nombre de marca (Si no hay logo)
             type: text
-          email_global:
-            label: Email de envíos (SMTP)
-            type: email
-          telefono_global:
-            label: Teléfono general
-            type: tel
       
       # PANTALLA: Footer y Redes
       sidebar:
